@@ -10,23 +10,24 @@ import java.net.http.HttpResponse;
 public class APIMain {
 
 	public static void main (String[] args) throws IOExecption, InterruptedExeception{
-		var url = "https://api.github.com/users/R0697";
+		var url = "https://covid19.mathdro.id/api";
 		
 		// httprequest
 		
 		var request = HttpRequest.newBuilder().GET().uri(URI.create(url)).build();
 		var client = HttpClient.newBuilder().build();
 		
-		HttpResponse<String> response;
+		HttpResponse<String> response = null;
 		try {
 			response = client.send(request, HttpResponse.BodyHandlers.ofString());
 		} catch (IOException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
 		
-		
-	}
-	
+		System.out.println(response.statusCode());
+		System.out.println(response.body());
+		}
+				
 }
+	
